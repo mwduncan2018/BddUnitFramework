@@ -3,9 +3,9 @@ package com.bddunitframework.context;
 import java.util.HashMap;
 
 public class ScenarioContext {
-	private HashMap<String, Object> bag = new HashMap<>();
+	private HashMap<String, Object> map = new HashMap<>();
 
-	public HashMap<String, Object> getBag() {
-		return bag;
+	public HashMap<String, Object> getMap() {
+		return map;
 	}
 }

@@ -11,7 +11,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>7.4.0</version>
+			<version>7.0.0</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -31,14 +31,6 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>7.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Share state (context) between step definitions -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-picocontainer</artifactId>
-			<version>6.10.3</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -114,24 +106,19 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.19.1</version>
 					<configuration>
+						<properties>
+							<property>
+								<name>dataproviderthreadcount</name>
+								<value>4</value>
+							</property>
+						</properties>
 						<parallel>methods</parallel>
 						<threadCount>4</threadCount>
-						<!-- <useUnlimitedThreads>true</useUnlimitedThreads> -->
-						<properties>
-							<configurationParameters>
-								junit.jupiter.conditions.deactivate = *
-								junit.jupiter.extensions.autodetection.enabled = true
-								junit.jupiter.testinstance.lifecycle.default = per_class
-							</configurationParameters>
-						</properties>
 					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.19.1</version>
 				</plugin>
 			</plugins>
 

@@ -16,10 +16,18 @@ public class SampleJava8Steps implements En {
 		this.context = context;
 
 		Given("I do something", () -> {
-			context.put("numberOfSteps", (Integer) context.get("numberOfSteps") + 1);
 			WebDriver driver = (WebDriver) context.get("driver");
 			driver.navigate().to(ConfigProps.getUrl());
 			driver.findElement(By.id("Username")).sendKeys("mduncan");
+		});
+
+		Given("I verify something", () -> {
+			WebDriver driver = (WebDriver) context.get("driver");
+			driver.findElement(By.id("btnLogin")).click();
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+			}
 		});
 
 		Given("I do something else", this::iDoSomethingElse);
@@ -27,7 +35,6 @@ public class SampleJava8Steps implements En {
 	}
 
 	private void iDoSomethingElse() {
-		context.put("numberOfSteps", (Integer) context.get("numberOfSteps") + 1);
 		WebDriver driver = (WebDriver) context.get("driver");
 		driver.findElement(By.id("Password")).sendKeys("cucumber");
 	}

@@ -13,20 +13,24 @@ public class ConfigProps {
 		return getProperty("environment");
 	}
 
+	public static String getGridIp() {
+		return getProperty("gridIp");
+	}
+	
 	public static String getDriverType() {
 		return getProperty("driverType");
 	}
 
-	public static String getWindowMaximize() {
-		return getProperty("windowMaximize");
+	public static String getMaximize() {
+		return getProperty("maximize");
 	}
 
-	public static String getBrowserHorizontalPixels() {
-		return getProperty("browserHorizontalPixels");
+	public static String getHorizontalPixels() {
+		return getProperty("horizontalPixels");
 	}
 
-	public static String getBrowserVerticalPixels() {
-		return getProperty("browserVerticalPixels");
+	public static String getVerticalPixels() {
+		return getProperty("verticalPixels");
 	}
 
 	public static String getUrl() {

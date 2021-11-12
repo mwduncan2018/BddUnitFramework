@@ -1,5 +1,6 @@
 package com.bddunitframework.hooks;
 
+import java.net.MalformedURLException;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
@@ -18,16 +19,14 @@ public class Hooks {
 		this.context = context;
 	}
 
-	@Before(order = 99)
-	public void beforeScenario() {
+	@Before(value = "@Browser", order = 99)
+	public void beforeScenario() throws MalformedURLException {
 		WebDriver driver = WebDriverFactory.getDriver();
 		context.put("driver", driver);
-		context.put("numberOfSteps", 0);
 	}
 
-	@After(order = 1)
+	@After(value = "@Browser", order = 1)
 	public void afterScenario() {
-		((WebDriver) context.get("driver")).close();
-		System.out.println("Number Of Steps: " + (Integer) context.get("numberOfSteps"));
+		((WebDriver) context.get("driver")).quit();
 	}
 }
