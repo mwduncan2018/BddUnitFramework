@@ -1,11 +1,13 @@
 version: "3"
 services:
 
-  fundemo-automation:
-    image: fundemo:1.0
-    container_name: fundemo_automation
+  karsun-demo-automation:
+    image: karsundemo:1.0
+    container_name: karsun_demo_automation
     command: mvn test
     env_file: .env
+    volumes:
+      - ./target:/automation/target
     depends_on:
       - selenium-hub
 

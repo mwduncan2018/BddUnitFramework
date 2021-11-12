@@ -73,11 +73,6 @@ public class GridScheduler {
 		String url = System.getenv("GRID_IP");
 		if (url == null)
 			url = ConfigProps.getGridIp();
-		System.out.println("*****************************************");
-		System.out.println("*****************************************");
-		System.out.println(url);
-		System.out.println("*****************************************");
-		System.out.println("*****************************************");
 		return url + "/grid/api/hub";
 	}
 }
