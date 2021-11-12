@@ -48,3 +48,4 @@ public class SmartAssetSteps implements En {
 		});
 	}
 }
+
