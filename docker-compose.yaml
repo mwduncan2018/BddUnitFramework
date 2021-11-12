@@ -2,7 +2,7 @@ version: "3"
 services:
 
   karsun-demo-automation:
-    image: karsundemo:9.9
+    image: karsundemo:1.0
     container_name: karsun_demo_automation
     command: mvn test
     env_file: .env
