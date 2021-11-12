@@ -1,20 +1,12 @@
 package com.bddunitframework.steps;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import io.cucumber.java8.En;
 
-import com.bddunitframework.config.ConfigProps;
-import com.bddunitframework.context.ScenarioContext;
 import com.bddunitframework.pageobjects.SmartAssetBasePage;
 import com.bddunitframework.pageobjects.SmartAssetFloridaPage;
 import com.bddunitframework.pageobjects.SmartAssetMarylandPage;
