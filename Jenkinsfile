@@ -11,8 +11,8 @@ pipeline {
         sh 'echo "This is demo $DEMO"'
         sh '''
           echo "Using a multi-line shell script"
-          chmod +x test.sh
-          ./test.sh
+          chmod +x temp.sh
+          ./temp.sh
         '''
       }
     }
