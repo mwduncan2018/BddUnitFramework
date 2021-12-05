@@ -6,16 +6,23 @@ pipeline {
   }
   
   stages {
-    stage('stage-1') {
+    stage('Build') {
+      agent any
+      environment {
+        LOG_LEVEL='INFO'
+      }
       steps {
-        sh 'echo "This is demo $DEMO"'
-        sh '''
-          echo "Using a multi-line shell script"
-          chmod +x test.sh
-          ./test.sh
-        '''
+        echo "BUILD STAGE!"
+        echo "DEMO is ${DEMO}"
+        echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
       }
     }
-
+    stage('Test') {
+      steps {
+        echo "TEST STAGE!"
+        echo "DEMO is ${DEMO}"
+        echo "Testing for release ${RELEASE}"
+      }
+    }
   }
 }
