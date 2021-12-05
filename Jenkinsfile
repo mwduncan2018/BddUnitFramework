@@ -1,14 +1,21 @@
 pipeline {
   agent any
+
+  environment {
+    DEMO = '1.3'
+  }
+  
   stages {
-    stage('Stage1') {
+    stage('stage-1') {
       steps {
-        sh 'echo "DEMO IS $DEMO"'
+        sh 'echo "This is demo $DEMO"'
+        sh '''
+          echo "Using a multi-line shell script"
+          chmod +x test.sh
+          ./test.sh
+        '''
       }
     }
 
-  }
-  environment {
-    DEMO = '1'
   }
 }
