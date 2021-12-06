@@ -2,46 +2,21 @@ pipeline {
   agent any
 
   environment {
-    RELEASE='25.04'
+    BUILD_NUMBER='1'
+    RELEASE='9.9'
+    DEMO='Pluralsight'
   }
   
   stages {
-    stage('Build') {
-      environment {
-        LOG_LEVEL='INFO'
-      }
+    stage('Alpha') {
+      echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo"
+      sh '''
+        echo "Multiple line shell step!"
+        chmod +x temp.sh
+        ./temp.sh
+      '''
+    }
       
-      steps {
-        echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
-        sh 'chmod +x temp.sh'
-        sh '''
-          ./temp.sh
-        '''
-      }
-    }
-    
-    stage('Test') {
-      steps {
-        echo "Testing release ${RELEASE}"
-        script {
-          if (Math.random() > 0.5) {
-            throw new Exception()
-          }
-        }
-        writeFile file: 'test-results.txt', text: 'passed'
-      }
-    }
   }
   
-  post {
-    success {
-      archiveArtifacts 'test-results.txt'
-    }
-    failure {
-      echo 'BUILD FAILED!'
-    }
-    always {
-      echo "Always print this message"
-    }
-  }
 }
