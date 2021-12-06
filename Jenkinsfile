@@ -9,14 +9,14 @@ pipeline {
   
   stages {
     stage('Alpha') {
-      echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo"
-      sh '''
-        echo "Multiple line shell step!"
-        chmod +x temp.sh
-        ./temp.sh
-      '''
-    }
-      
+      steps {
+        echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo"
+        sh '''
+          echo "Multiple line shell step!"
+          chmod +x temp.sh
+          ./temp.sh
+        '''
+      }
+    }      
   }
-  
 }
