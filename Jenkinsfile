@@ -2,8 +2,7 @@ pipeline {
   agent any
 
   environment {
-    DEMO='1.3'
-    //RELEASE='DEEP'
+    RELEASE='20.04'
   }
   
   stages {
@@ -14,14 +13,14 @@ pipeline {
       }
       steps {
         echo "BUILD STAGE!"
-        echo "DEMO is ${DEMO}"
+        echo "Version is ${env.RELEASE}
         echo "Building release with log level ${LOG_LEVEL}..."
       }
     }
     stage('Test') {
       steps {
         echo "TEST STAGE!"
-        echo "DEMO is ${DEMO}"
+        echo "Version is ${env.RELEASE}
         echo "Testing for release"
       }
     }
