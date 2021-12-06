@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    RELEASE='23.04'
+    RELEASE='24.04'
   }
   
   stages {
@@ -13,6 +13,10 @@ pipeline {
       
       steps {
         echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+        sh 'chmod +x temp.sh'
+        sh '''
+          ./temp.sh
+        '''
       }
     }
     
