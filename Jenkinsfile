@@ -2,7 +2,8 @@ pipeline {
   agent any
 
   environment {
-    DEMO = '1.3'
+    DEMO='1.3'
+    RELEASE='DEEP'
   }
   
   stages {
