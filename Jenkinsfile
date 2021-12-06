@@ -8,14 +8,25 @@ pipeline {
   }
   
   stages {
-    stage('Alpha') {
+    stage('Build') {
+      environment {
+        LOG_LEVEL='INFO'
+      }
       steps {
-        echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo"
+        echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo and log level is ${LOG_LEVEL}"
         sh '''
-          echo "Multiple line shell step!"
           chmod +x temp.sh
           ./temp.sh
         '''
+      }
+    }      
+    stage('Test') {
+      environment {
+        LOG_LEVEL='WARNING'
+      }
+      steps {
+        echo 'TEST STAGE!'
+        echo "Release is ${RELEASE} and demo is ${DEMO} and log level is ${LOG_LEVEL}"
       }
     }      
   }
