@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    RELEASE='24.04'
+    RELEASE='25.04'
   }
   
   stages {
@@ -23,17 +23,25 @@ pipeline {
     stage('Test') {
       steps {
         echo "Testing release ${RELEASE}"
+        script {
+          if (Math.random() > 0.5) {
+            throw new Exception()
+          }
+        }
         writeFile file: 'test-results.txt', text: 'passed'
       }
     }
   }
   
   post {
-    always {
-      echo "Always print this message"
-    }
     success {
       archiveArtifacts 'test-results.txt'
+    }
+    failure {
+      echo 'BUILD FAILED!'
+    }
+    always {
+      echo "Always print this message"
     }
   }
 }
