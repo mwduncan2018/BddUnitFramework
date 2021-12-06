@@ -13,14 +13,14 @@ pipeline {
       }
       steps {
         echo "BUILD STAGE!"
-        echo "Version is ${env.RELEASE}
+        echo "Version is ${env.RELEASE}"
         echo "Building release with log level ${LOG_LEVEL}..."
       }
     }
     stage('Test') {
       steps {
         echo "TEST STAGE!"
-        echo "Version is ${env.RELEASE}
+        echo "Version is ${env.RELEASE}"
         echo "Testing for release"
       }
     }
