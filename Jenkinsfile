@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    RELEASE='21.04'
+    RELEASE='22.04'
   }
   
   stages {
@@ -11,10 +11,22 @@ pipeline {
       environment {
         LOG_LEVEL='INFO'
       }
-      steps {
-        echo "BUILD STAGE!"
-        echo "Version is ${env.RELEASE}"
-        echo "Building release with log level ${LOG_LEVEL}..."
+      parallel {
+        stage('linux-arm64') {
+          steps {
+            echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
+          }
+        }
+        stage('linux-amd64') {
+          steps {
+            echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
+          }
+        }
+        stage('windows-amd64') {
+          steps {
+            echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
+          }
+        }
       }
     }
     stage('Test') {
