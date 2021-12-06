@@ -36,10 +36,10 @@ pipeline {
         echo "Deploying release ${RELEASE} to environment ${TARGET_ENVIRONMENT}"
       }
     }
-    post {
-      always {
-        echo "Always print this message"
-      }
+  }
+  post {
+    always {
+      echo "Always print this message"
     }
   }
 }
