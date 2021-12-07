@@ -52,6 +52,12 @@ pipeline {
       steps {
         echo 'TEST STAGE!'
         echo "Release is ${RELEASE} and demo is ${DEMO} and log level is ${LOG_LEVEL}"
+        withCredentials([string(credentialsId: 'MY_LOGIN_USERNAME', varaible: 'LOGIN_USERNAME']) {
+          sh '''
+            chmod +x login.sh
+            ./login.sh
+          '''
+        }
         writeFile file: 'test-results.txt', text: 'Testing passes!'
       }
     }
