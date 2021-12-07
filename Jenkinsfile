@@ -52,6 +52,7 @@ pipeline {
       steps {
         echo 'TEST STAGE!'
         echo "Release is ${RELEASE} and demo is ${DEMO} and log level is ${LOG_LEVEL}"
+        writeFile file: 'test-results.txt', text: 'Testing passes!'
       }
     }
     stage('Deploy') {
