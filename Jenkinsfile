@@ -2,8 +2,8 @@ pipeline {
   agent any
 
   environment {
+    RELEASE='9.8'
     BUILD_NUMBER='1'
-    RELEASE='9.9'
     DEMO='Pluralsight'
   }
   
@@ -28,6 +28,20 @@ pipeline {
         echo 'TEST STAGE!'
         echo "Release is ${RELEASE} and demo is ${DEMO} and log level is ${LOG_LEVEL}"
       }
-    }      
+    }
+    stage('Deploy') {
+      input {
+        message 'Hey, do you want to deploy?'
+        ok 'DO IT NOW!'
+        paramters {
+          string(name: 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment environment')
+        }
+      }
+    }
+  }
+  post {
+    always {
+      echo 'This always prints!'
+    }
   }
 }
