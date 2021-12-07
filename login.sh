@@ -1,6 +1,8 @@
 echo 'Inside login.sh'
 
-if [ LOGIN_USERNAME -eq "MY_LOGIN_USERNAME" ]
+ABC="MY_LOGIN_USERNAME"
+
+if [ "$LOGIN_USERNAME" == "$ABC" ]
 then
   echo "SUCCESS"
 else
