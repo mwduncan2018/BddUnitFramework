@@ -2,8 +2,8 @@ pipeline {
   agent any
 
   environment {
-    RELEASE='9.8'
-    BUILD_NUMBER='1'
+    RELEASE='9.7'
+    BUILD_NUMBER='2'
     DEMO='Pluralsight'
   }
   
@@ -12,12 +12,37 @@ pipeline {
       environment {
         LOG_LEVEL='INFO'
       }
-      steps {
-        echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo and log level is ${LOG_LEVEL}"
-        sh '''
-          chmod +x temp.sh
-          ./temp.sh
-        '''
+      parallel {
+        stage('linux-arm64') {
+          steps {
+            echo "Hey! This is stage name ${STAGE_NAME}"
+            echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo and log level is ${LOG_LEVEL}"
+            sh '''
+              chmod +x temp.sh
+              ./temp.sh
+            '''
+          }          
+        }
+        stage('linux-amd64') {
+          steps {
+            echo "Hey! This is stage name ${STAGE_NAME}"
+            echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo and log level is ${LOG_LEVEL}"
+            sh '''
+              chmod +x temp.sh
+              ./temp.sh
+            '''
+          }
+        }
+        stage('windows-amd64') {
+          steps {
+            echo "Hey! This is stage name ${STAGE_NAME}"
+            echo "This is build number ${BUILD_NUMBER} for release ${RELEASE} for ${DEMO} demo and log level is ${LOG_LEVEL}"
+            sh '''
+              chmod +x temp.sh
+              ./temp.sh
+            '''
+          }
+        }
       }
     }      
     stage('Test') {
