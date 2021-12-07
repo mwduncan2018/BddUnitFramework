@@ -1,3 +1,8 @@
 echo 'Inside login.sh'
-echo 'Username:'
-printenv | grep LOGIN_USERNAME
+
+if [ LOGIN_USERNAME -eq "MY_LOGIN_USERNAME" ]
+then
+  echo "SUCCESS"
+else
+  echo "FAILURE"
+fi
