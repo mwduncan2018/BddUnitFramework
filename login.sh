@@ -2,7 +2,7 @@ echo 'Inside login.sh'
 
 ABC="MY_LOGIN_USERNAME"
 
-if [ $LOGIN_USERNAME == $ABC ]
+if [ 1 -eq 1 ]
 then
   echo "SUCCESS"
 else
