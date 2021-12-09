@@ -81,7 +81,11 @@ pipeline {
   }
   post {
     success {
+      echo "The build was successful"
       archiveArtifacts 'test-results.txt'
+    }
+    failure {
+      echo "The build was a failure"
     }
     always {
       echo 'This always prints!'
