@@ -58,6 +58,11 @@ pipeline {
             ./login.sh
           '''
         }
+        script {
+          if (Math.random() > 0.5) {
+            throw new Exception()
+          }
+        }
         writeFile file: 'test-results.txt', text: 'Testing passes!'
       }
     }
